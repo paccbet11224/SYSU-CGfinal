@@ -1,2 +1,0 @@
-D:\final\x64\Debug\freeglutd.dll
-D:\final\final\x64\Debug\final.vcxproj.Up2Date

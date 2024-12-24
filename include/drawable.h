@@ -4,7 +4,7 @@
 #include <glm/mat4x4.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp> //perspective
-#include <GL\glew.h>
+#include <GL/glew.h>
 
 //interface for a drawable element such as a cube or a sphere
 class Drawable{

@@ -92,7 +92,7 @@ void Model::loadModelone(const std::string& objPath, const std::string& mtlPath)
             ss >> vertexStr[0] >> vertexStr[1] >> vertexStr[2];
             for (int i = 0; i < 3; ++i) {
                 unsigned int posIdx, texIdx;
-                sscanf_s(vertexStr[i].c_str(), "%d/%d", &posIdx, &texIdx);
+                sscanf(vertexStr[i].c_str(), "%d/%d", &posIdx, &texIdx);
 
                 Vertex vert;
                 vert.Position = temp_positions[posIdx - 1];
@@ -183,7 +183,7 @@ void Model::loadModeltwo(const std::string& objPath, const std::string& mtlPath)
             ss >> vertexStr[0] >> vertexStr[1] >> vertexStr[2];
             for (int i = 0; i < 3; ++i) {
                 unsigned int posIdx, texIdx;
-                sscanf_s(vertexStr[i].c_str(), "%d/%d", &posIdx, &texIdx);
+                sscanf(vertexStr[i].c_str(), "%d/%d", &posIdx, &texIdx);
 
                 Vertex vert;
                 vert.Position = temp_positions[posIdx - 1];  // 索引从 1 开始，数组从 0 开始

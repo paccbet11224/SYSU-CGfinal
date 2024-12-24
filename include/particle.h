@@ -2,9 +2,6 @@
 #include <iostream>
 #include <stdio.h>
 #include <GL/glut.h>
-#include <gl/gl.h>
-#include <gl/glu.h>
-#include <GLAux.h>
 #include <math.h>
 
 struct Particle

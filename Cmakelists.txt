@@ -1,0 +1,62 @@
+# CMake 最低版本要求
+cmake_minimum_required(VERSION 3.10)
+
+# 项目名称
+project(CGfinal)
+
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
+
+# 添加源文件
+set(SOURCES
+    source/Snow.cpp
+    source/grass.cpp
+    source/main.cpp
+    source/model.cpp
+    source/particle.cpp
+    source/rock.cpp
+    source/shader.cpp
+    source/shader_utils.cpp
+    source/skybox.cpp
+    source/stb_image.c
+    source/texture.cpp
+    source/tree.cpp
+    source/word.cpp
+)
+
+# 添加头文件目录
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include,
+    "C:/Users/21168/Desktop/CGfinal/include"
+    "C:/Users/21168/Desktop/CGfinal/extern/glew-2.1.0/include"
+    "C:/Users/21168/Desktop/CGfinal/extern/glm-1.0.1"
+    "C:/Users/21168/Desktop/CGfinal/extern/glfw-3.4/include"
+    # "C:/Users/21168/Desktop/CGfinal/extern/glut-3.7/include"
+    "C:/Users/21168/Desktop/CGfinal/extern/freeglut-3.6.0/include"
+)
+link_directories(
+    "C:/Users/21168/Desktop/CGfinal/extern/glew-2.1.0/lib/Release/x64"
+    "C:/Users/21168/Desktop/CGfinal/extern/glfw-3.4/lib-mingw-w64"
+    # "C:/Users/21168/Desktop/CGfinal/extern/glut-3.7/lib"
+    "C:/Users/21168/Desktop/CGfinal/extern/freeglut-3.6.0/build/lib"
+)
+
+# 查找 OpenGL 库
+find_package(OpenGL REQUIRED)
+
+
+# 添加可执行文件
+add_executable(
+    ${PROJECT_NAME}
+    ${SOURCES}
+)
+
+# 链接库
+target_link_libraries(${PROJECT_NAME}
+    opengl32
+    glew32
+    # glut32
+    freeglut
+)

@@ -1,6 +1,6 @@
-#include"particle.h"
-#include"word.h"
-#include"Snow.h"
+#include "particle.h"
+#include "word.h"
+#include "Snow.h"
 CParticle Snow;
 
 /** 初始化雪花粒子 */

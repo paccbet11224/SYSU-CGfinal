@@ -1,4 +1,6 @@
 #include "particle.h"
+#include <cstring>
+
 /***** 创建一个包含num个元素的粒子数组 *****/
 int CParticle::Create(long num)
 {
