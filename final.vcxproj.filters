@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\skybox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\shader_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\grass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\tree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="final.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\rock.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\final.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Snow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stb_image.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\particle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\word.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\skybox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shader_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\grass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rock.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Snow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\drawable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\particle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\depth_framebuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shader_helper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\word.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLAux.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\skybox.vert" />
+    <None Include="Shaders\skybox.frag" />
+    <None Include="Shaders\grass.vert" />
+    <None Include="Shaders\grass.frag" />
+    <None Include="Shaders\tree.vert" />
+    <None Include="Shaders\tree.frag" />
+    <None Include="Shaders\rock.frag" />
+    <None Include="Shaders\rock.vert" />
+    <None Include="Shaders\snow.frag" />
+    <None Include="Shaders\snow.vert" />
+    <None Include="Shaders\Render.fs" />
+    <None Include="Shaders\Render.vs" />
+    <None Include="Shaders\snowUpdate.fs" />
+    <None Include="Shaders\snowUpdate.gs" />
+    <None Include="Shaders\snowUpdate.vs" />
+    <None Include="Shaders\snow_particles_fshader.glsl" />
+    <None Include="Shaders\snow_particles_vshader.glsl" />
+  </ItemGroup>
+</Project>
