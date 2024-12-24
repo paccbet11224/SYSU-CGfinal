@@ -34,9 +34,7 @@ GLfloat lastFrame = 0.0f;
 // 全局变量
 glm::mat4 projection;
 glm::mat4 view;
-//Skybox skybox;  // 假设你已经定义了一个 Skybox 类
-//Grass grass;    // 假设你已经定义了一个 Grass 类
-//Rock rock;      // 假设你已经定义了一个 Rock 类
+
 // 按键状态
 bool keys[256]; // 用于存储普通键的状态
 bool specialKeys[256]; // 用于存储特殊键（如方向键）的状态
@@ -525,7 +523,45 @@ void displaySnow(void)
     glFlush();
 }
 
+// 声明全局变量（使用指针）
+std::unique_ptr<Skybox> skybox;
+std::unique_ptr<Grass> grass;
+std::unique_ptr<Rock> rock;
 
+// 初始化函数
+void init() {
+    // 初始化 GLEW
+    if (glewInit() != GLEW_OK) {
+        std::cerr << "Fail to initialize GLEW" << std::endl;
+        return;
+    }
+    std::cout << "GLEW initialized successfully" << std::endl;
+
+    // 启用深度测试
+    glEnable(GL_DEPTH_TEST);
+
+    // 初始化投影矩阵
+    projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
+    // 初始化天空盒、草地和岩石（延迟到 init 内完成）
+    std::vector<std::string> faces = {
+        "Assets/Skybox/right(3).jpg",
+        "Assets/Skybox/left(3).jpg",
+        "Assets/Skybox/top(3).jpg",
+        "Assets/Skybox/bottom(3).jpg",
+        "Assets/Skybox/front(3).jpg",
+        "Assets/Skybox/back(3).jpg"
+    };
+    skybox = std::make_unique<Skybox>(faces);
+    grass = std::make_unique<Grass>("Assets/grass.png");
+    rock = std::make_unique<Rock>("Assets/Rock/stone.obj", "Assets/Rock/stone.mtl");
+
+    // 初始化雪花
+    Snow.Create(1000);
+    InitSnow();
+}
+
+// 渲染函数
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -536,56 +572,23 @@ void display() {
     glm::mat4 skyboxView = glm::mat4(glm::mat3(view));
     glDepthMask(GL_FALSE);  // 禁用深度写入
     glDepthFunc(GL_LEQUAL); // 允许天空盒遮挡物体
-    //skybox.render(skyboxView, projection);
+    skybox->render(skyboxView, projection);
     glDepthMask(GL_TRUE);   // 恢复深度写入
     glDepthFunc(GL_LESS);   // 恢复标准深度测试
 
     // 渲染草地（不透明物体）
-    //grass.render(view, projection);
+    grass->render(view, projection);
 
     // 渲染雪花（透明物体）
-    glEnable(GL_DEPTH_TEST); // 启用深度测试
-
-    InitSnow();
-    displaySnow();  // 直接调用渲染雪花的函数
+    displaySnow();
 
     // 渲染岩石（不透明物体）
     glm::mat4 rockModelMatrix = glm::mat4(1.0f);
     rockModelMatrix = glm::translate(rockModelMatrix, glm::vec3(20.0f, 20.0f, 20.0f)); // 设置岩石位置
     rockModelMatrix = glm::scale(rockModelMatrix, glm::vec3(12.0f)); // 调整岩石大小
-    //rock.render(view, projection, rockModelMatrix);
-
+    rock->render(view, projection, rockModelMatrix);
 
     glutSwapBuffers(); // 交换缓冲区
-}
-
-void init() {
-    glEnable(GL_DEPTH_TEST); // 启用深度测试
-
-    // 初始化投影矩阵
-    projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-
-    // 加载天空盒
-    std::vector<std::string> faces = {
-        "Assets/Skybox/right(3).jpg",
-        "Assets/Skybox/left(3).jpg",
-        "Assets/Skybox/top(3).jpg",
-        "Assets/Skybox/bottom(3).jpg",
-        "Assets/Skybox/front(3).jpg",
-        "Assets/Skybox/back(3).jpg"
-    };
-    Skybox skybox(faces);
-
-    // 加载草地
-    Grass grass("Assets/grass.png");
-
-    // 初始化雪花
-    Snow.Create(1000);
-    InitSnow();
-
-    // 加载岩石
-    Rock rock("Assets/Rock/stone.obj", "Assets/Rock/stone.mtl");
-
 }
 
 // 主函数
@@ -595,7 +598,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(1600, 1200);
     glutCreateWindow("GLUT Demo");
 
-    init();
+    init(); // 初始化所有资源
 
     // 注册回调函数
     glutDisplayFunc(display);
